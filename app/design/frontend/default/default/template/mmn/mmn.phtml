@@ -18,9 +18,9 @@ $rows = $read->fetchAll($select);
 			
 if (count($rows) > 0) {
   
-	$Manufacturer_array[] = array('id' => 'all', 'text' => 'Choose Manufacturer');
-	$Model_array[] = array('id' => 'all', 'text' => 'Choose Model');
-	$Number_array[] = array('id' => 'all', 'text' => 'Choose Number');
+	$Manufacturer_array[] = array('id' => 'all', 'text' => $this->__('Choose Manufacturer'));
+	$Model_array[] = array('id' => 'all', 'text' => $this->__('Choose Model'));
+	$Number_array[] = array('id' => 'all', 'text' => $this->__('Choose Number'));
 
    $javascript = '<script language="javascript" type="text/javascript">
 var a = new Array();
@@ -61,7 +61,7 @@ var c = new Array();';
       $javascript .= '
 function pop_model(){
 	
-	var o ="<select name=\"Model\" onChange=\"pop_number();\" style=\"width: 100%\"><option value=\"all\">Choose Model</option>";	
+	var o ="<select name=\"Model\" onChange=\"pop_number();\" style=\"width: 100%\"><option value=\"all\">' . $this->__('Choose Model') . '</option>";	
 	var sv = document.manufacturer_model_number.Manufacturer.value;
 	if(sv != "all"){
 		var v = a.length;
@@ -71,11 +71,11 @@ function pop_model(){
 	}
 	o+="</select>";
 	document.getElementById("model_select").innerHTML= o;
-    document.getElementById("number_select").innerHTML= "<select name=\"Number\" style=\"width: 100%\"><option value=\"all\">Choose Number</option></select>";
+    document.getElementById("number_select").innerHTML= "<select name=\"Number\" style=\"width: 100%\"><option value=\"all\">' . $this->__('Choose Number') . '</option></select>";
 }
 function pop_number(){
 	
-	var o ="<select name=\"Number\" style=\"width: 100%\" onChange=\"document.manufacturer_model_number.submit();\"><option value=\"all\">Choose Number</option>";
+	var o ="<select name=\"Number\" style=\"width: 100%\" onChange=\"document.manufacturer_model_number.submit();\"><option value=\"all\">' . $this->__('Choose Number') . '</option>";
 	var sv = document.manufacturer_model_number.Manufacturer.value;
 	if(sv != "all"){
 		var v = a.length;
@@ -128,7 +128,7 @@ function pop_number(){
 ?>
 <div class="box base-mini mini-poll">
     <div class="head">
-        <h4><span><?php echo $this->__('Select Printer') ?></span></h4>
+        <h4><span><?php echo $this->__('Select Printer'); ?></span></h4>
     </div>
     <form name="manufacturer_model_number"  action="<?php 
 	$hidden = '';
@@ -165,7 +165,7 @@ function pop_number(){
 			</select></span><br><br>			
         </div>
         <div class="actions">
-		<button class="form-button-alt right" type="submit"><span><?php echo $this->__('Go') ?></span></button>
+		<button class="form-button-alt right" type="submit"><span><?php echo $this->__('Go'); ?></span></button>
 		<?php if(isset($Manufacturer_selected_var)): ?>
 			<a href="<?php 	
 				if($module == 'catalog_category_view'){
@@ -175,7 +175,7 @@ function pop_number(){
 				}	else {
 					echo Mage::getBaseUrl() . '?';
 				}	
-			?>Manufacturer=all&Model=all&Number=all">Clear Printer</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			?>Manufacturer=all&Model=all&Number=all"><?php echo $this->__('Clear Printer'); ?></a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<?php endif ?>
 		</div>
     </form>

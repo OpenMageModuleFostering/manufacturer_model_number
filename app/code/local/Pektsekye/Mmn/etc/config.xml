@@ -22,6 +22,15 @@
                 </mmn>
             </updates>
         </layout>
+		<translate>
+            <modules>
+                <Pektsekye_Mmn>
+                     <files>
+                          <default>Pektsekye_Mmn.csv</default>
+                     </files>
+                </Pektsekye_Mmn>
+            </modules>
+        </translate>
     </frontend>
     <admin>
         <routers>
