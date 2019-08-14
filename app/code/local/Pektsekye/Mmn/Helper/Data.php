@@ -43,7 +43,7 @@ class Pektsekye_Mmn_Helper_Data extends Mage_Core_Helper_Abstract
 			$read= $resource->getConnection('core_read');
 			$productTable = $resource->getTableName('catalog_product_entity');
 			$mmnTable = $resource->getTableName('mmn');
-			$rows = $read->fetchAll("SELECT DISTINCT entity_id FROM $productTable LEFT JOIN $mmnTable USING (entity_id) WHERE $where");
+			$rows = $read->fetchAll("SELECT DISTINCT entity_id FROM $productTable LEFT JOIN $mmnTable USING (sku) WHERE $where");
 			
 			if(count($rows)>0){
 				foreach ($rows as $r)

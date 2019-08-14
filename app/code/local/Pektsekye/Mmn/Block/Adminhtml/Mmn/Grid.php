@@ -21,10 +21,10 @@ class Pektsekye_Mmn_Block_Adminhtml_Mmn_Grid extends Mage_Adminhtml_Block_Widget
   protected function _prepareColumns()
   {
 
-      $this->addColumn('entity_id', array(
-          'header'    => Mage::helper('mmn')->__('Products ID'),
+      $this->addColumn('sku', array(
+          'header'    => Mage::helper('mmn')->__('SKU'),
           'align'     =>'left',
-          'index'     => 'entity_id',
+          'index'     => 'sku',
       ));
 	  
       $this->addColumn('manufacturer', array(

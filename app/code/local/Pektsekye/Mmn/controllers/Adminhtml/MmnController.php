@@ -52,7 +52,7 @@ class Pektsekye_Mmn_Adminhtml_MmnController extends Mage_Adminhtml_Controller_ac
 	public function saveAction() {
 		if ($data = $this->getRequest()->getPost()) {
 			
-			$data ['entity_id'] = (int) $data ['entity_id'];
+			$data ['sku'] = trim($data ['sku']);
 			$data ['manufacturer'] = trim(preg_replace('/[^\w\s-]/','',$data ['manufacturer']));
 			$data ['model'] = trim(preg_replace('/[^\w\s-]/','',$data ['model']));
 			$data ['number'] = trim(preg_replace('/[^\w\s-]/','',$data ['number']));
@@ -211,7 +211,7 @@ class Pektsekye_Mmn_Adminhtml_MmnController extends Mage_Adminhtml_Controller_ac
 		$number = 0;
         /** checks columns */
         $csvFields  = array(
-            0   => Mage::helper('mmn')->__('Products ID'),
+            0   => Mage::helper('mmn')->__('SKU'),
             1   => Mage::helper('mmn')->__('Printer Manufacturer'),
             2   => Mage::helper('mmn')->__('Printer Model'),
             3   => Mage::helper('mmn')->__('Printer Number')
@@ -232,8 +232,9 @@ class Pektsekye_Mmn_Adminhtml_MmnController extends Mage_Adminhtml_Controller_ac
                     Mage::getSingleton('adminhtml/session')->addError(Mage::helper('mmn')->__('Invalid file upload attempt'));
                 }
 				
-				if (!empty($v[0]) && is_numeric($v[0])) {
+				if (!empty($v[0])) {
 					
+				    $v[0] = trim($v[0]);					
 				    $v[1] = trim(preg_replace('/[^\w\s-]/','',$v[1]));
 					$v[2] = trim(preg_replace('/[^\w\s-]/','',$v[2]));
 					$v[3] = trim(preg_replace('/[^\w\s-]/','',$v[3]));
@@ -243,7 +244,7 @@ class Pektsekye_Mmn_Adminhtml_MmnController extends Mage_Adminhtml_Controller_ac
 					$mmnTable = $resource->getTableName('mmn');
 					$select = $read->select()
 											->from($mmnTable,array('mmn_id'))
-											->where("entity_id=?",(int)$v[0])
+											->where("sku=?",$v[0])
 											->where("manufacturer=?",$v[1])
 											->where("model=?",$v[2])
 											->where("number=?",$v[3])										
@@ -254,7 +255,7 @@ class Pektsekye_Mmn_Adminhtml_MmnController extends Mage_Adminhtml_Controller_ac
 					}	 
 
 					$data  = array(
-						'entity_id'=>$v[0],
+						'sku'=>$v[0],
 						'manufacturer' => $v[1],
 						'model' => $v[2],
 						'number'  => $v[3]

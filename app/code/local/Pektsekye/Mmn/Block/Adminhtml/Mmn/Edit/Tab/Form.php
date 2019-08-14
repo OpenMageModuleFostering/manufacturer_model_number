@@ -8,10 +8,10 @@ class Pektsekye_Mmn_Block_Adminhtml_Mmn_Edit_Tab_Form extends Mage_Adminhtml_Blo
       $this->setForm($form);
       $fieldset = $form->addFieldset('mmn_form', array('legend'=>Mage::helper('mmn')->__('Item information')));
      
-      $fieldset->addField('entity_id', 'text', array(
-          'label'     => Mage::helper('mmn')->__('Products ID'),
+      $fieldset->addField('sku', 'text', array(
+          'label'     => Mage::helper('mmn')->__('SKU'),
           'required'  => true,
-          'name'      => 'entity_id',
+          'name'      => 'sku',
       ));
      
       $fieldset->addField('manufacturer', 'text', array(
