@@ -6,6 +6,9 @@
         </Pektsekye_Mmn>
     </modules>
     <frontend>
+        <secure_url>
+            <customer>/mmn/</customer>
+        </secure_url>
         <routers>
             <mmn>
                 <use>standard</use>
