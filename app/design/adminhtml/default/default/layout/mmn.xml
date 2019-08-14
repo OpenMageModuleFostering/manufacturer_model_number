@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <mmn_adminhtml_mmn_index>
+        <reference name="content">
+            <block type="mmn/adminhtml_mmn" name="mmn" />
+        </reference>
+    </mmn_adminhtml_mmn_index>
+</layout>

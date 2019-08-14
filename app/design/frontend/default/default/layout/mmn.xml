@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	
+	<default>
+        <reference name="right">
+            <block type="mmn/mmn" name="mmn" before="-" template="mmn/mmn.phtml"/>
+        </reference>
+    </default>
+	
+	    <mmn_product_list>
+		  <reference name="right">
+            <block type="catalogsearch/layer" name="catalogsearch.leftnav" after="mmn" template="catalog/layer/view.phtml"/>
+        </reference>
+        <reference name="content">
+            <block type="mmn/product_result" name="mmn_products" template="catalogsearch/result.phtml">
+                <block type="catalog/product_list" name="search_result_list" template="catalog/product/list.phtml"></block>
+                <action method="setListOrders"/>
+                <action method="setListModes"/>
+                <action method="setListCollection"/>
+            </block>
+        </reference>
+    </mmn_product_list>
+	
+</layout> 
