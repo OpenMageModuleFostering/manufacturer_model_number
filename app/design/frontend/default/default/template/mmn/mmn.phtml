@@ -140,7 +140,7 @@ function pop_number(){
 		echo Mage::getUrl('mmn/product/list');
 	}	
 
-?>" method="get">
+?>" method="get" onsubmit="return document.manufacturer_model_number.Manufacturer.value != 'all' ? true : false">
 <?php echo $hidden; ?>
         <div class="content">
 			<select name="Manufacturer" onChange="pop_model();"  style="width: 100%">

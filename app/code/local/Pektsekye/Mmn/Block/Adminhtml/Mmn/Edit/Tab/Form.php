@@ -16,7 +16,7 @@ class Pektsekye_Mmn_Block_Adminhtml_Mmn_Edit_Tab_Form extends Mage_Adminhtml_Blo
      
       $fieldset->addField('manufacturer', 'text', array(
           'label'     => Mage::helper('mmn')->__('Printer Manufacturer'),
-          'required'  => true,
+          'required'  => false,
           'name'      => 'manufacturer',
       ));
      

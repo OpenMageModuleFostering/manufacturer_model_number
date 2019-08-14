@@ -232,7 +232,7 @@ class Pektsekye_Mmn_Adminhtml_MmnController extends Mage_Adminhtml_Controller_ac
                     Mage::getSingleton('adminhtml/session')->addError(Mage::helper('mmn')->__('Invalid file upload attempt'));
                 }
 				
-				if (!empty($v[0]) && is_numeric($v[0]) && !empty($v[1])) {
+				if (!empty($v[0]) && is_numeric($v[0])) {
 					
 				    $v[1] = trim(preg_replace('/[^\w\s-]/','',$v[1]));
 					$v[2] = trim(preg_replace('/[^\w\s-]/','',$v[2]));
