@@ -7,7 +7,7 @@
     </modules>
     <frontend>
         <secure_url>
-            <customer>/mmn/</customer>
+            <mmn>/mmn/</mmn>
         </secure_url>
         <routers>
             <mmn>
