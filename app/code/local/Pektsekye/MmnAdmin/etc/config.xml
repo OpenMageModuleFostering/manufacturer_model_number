@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Pektsekye_MmnAdmin>
+            <version>0.2.0</version>
+        </Pektsekye_MmnAdmin>
+    </modules>
+    <admin>
+        <routers>
+			<mmnadmin>
+				<use>admin</use>
+				<args>
+					<module>Pektsekye_MmnAdmin</module>
+					<frontName>mmnadmin</frontName>
+				</args>
+			</mmnadmin>
+        </routers>
+    </admin>
+    <adminhtml>
+		<menu>
+			<mmnadmin module="mmnadmin">
+				<title>Mmn</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<items module="mmnadmin">
+						<title>Manage Items</title>
+						<sort_order>0</sort_order>
+						<action>mmnadmin/items</action>
+					</items>
+					<import module="mmnadmin">
+						<title>Import / Export</title>
+						<sort_order>1</sort_order>
+						<action>mmnadmin/items/importExport</action>
+					</import>					
+				</children>
+			</mmnadmin>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<Pektsekye_MmnAdmin>
+							<title>MmnAdmin Module</title>
+							<sort_order>10</sort_order>
+						</Pektsekye_MmnAdmin>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<mmnadmin>
+					<file>mmnadmin.xml</file>
+				</mmnadmin>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <mmnadmin>
+                <class>Pektsekye_MmnAdmin_Model</class>
+                <resourceModel>mmnadmin_mysql4</resourceModel>
+            </mmnadmin>
+            <mmnadmin_mysql4>
+                <class>Pektsekye_MmnAdmin_Model_Mysql4</class>
+                <entities>
+                    <mmn>
+                        <table>mmn</table>
+                    </mmn>
+                </entities>
+            </mmnadmin_mysql4>
+        </models>
+        <resources>
+		
+            <mmnadmin_setup>
+                <setup>
+                    <module>Pektsekye_MmnAdmin</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </mmnadmin_setup>
+            <mmnadmin_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </mmnadmin_write>
+            <mmnadmin_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </mmnadmin_read>
+        </resources>
+        <blocks>
+            <mmnadmin>
+                <class>Pektsekye_MmnAdmin_Block</class>
+            </mmnadmin>
+        </blocks>
+        <helpers>
+            <mmnadmin>
+                <class>Pektsekye_MmnAdmin_Helper</class>
+            </mmnadmin>
+        </helpers>
+    </global>	
+</config>

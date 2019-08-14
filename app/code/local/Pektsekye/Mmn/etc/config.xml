@@ -6,9 +6,6 @@
         </Pektsekye_Mmn>
     </modules>
     <frontend>
-        <secure_url>
-            <mmn>/mmn/</mmn>
-        </secure_url>
         <routers>
             <mmn>
                 <use>standard</use>
@@ -34,75 +31,22 @@
                 </Pektsekye_Mmn>
             </modules>
         </translate>
-    </frontend>
-    <admin>
-        <routers>
-			<mmn>
-				<use>admin</use>
-				<args>
-					<module>Pektsekye_Mmn</module>
-					<frontName>mmn</frontName>
-				</args>
-			</mmn>
-        </routers>
-    </admin>
-    <adminhtml>
-		<menu>
-			<mmn module="mmn">
-				<title>Mmn</title>
-				<sort_order>71</sort_order>               
-				<children>
-					<items module="mmn">
-						<title>Manage Items</title>
-						<sort_order>0</sort_order>
-						<action>mmn/adminhtml_mmn</action>
-					</items>
-					<import module="mmn">
-						<title>Import / Export</title>
-						<sort_order>1</sort_order>
-						<action>mmn/adminhtml_mmn/importExport</action>
-					</import>					
-				</children>
-			</mmn>
-		</menu>
-		<acl>
-			<resources>
-				<all>
-					<title>Allow Everything</title>
-				</all>
-				<admin>
-					<children>
-						<Pektsekye_Mmn>
-							<title>Mmn Module</title>
-							<sort_order>10</sort_order>
-						</Pektsekye_Mmn>
-					</children>
-				</admin>
-			</resources>
-		</acl>
-		<layout>
-			<updates>
-				<mmn>
-					<file>mmn.xml</file>
-				</mmn>
-			</updates>
-		</layout>
-    </adminhtml>   
+    </frontend>   
     <global>
         <models>
 			<catalog>
 				<rewrite> 
-					<category>Pektsekye_Catalog_Model_Category</category> 
+					<category>Pektsekye_Mmn_Model_Category</category> 
 				</rewrite> 
 			</catalog> 	
 			<catalog_resource_eav_mysql4>
 				<rewrite> 
-					<category>Pektsekye_Catalog_Model_Resource_Eav_Mysql4_Category</category> 
+					<category>Pektsekye_Mmn_Model_Resource_Eav_Mysql4_Category</category> 
 				</rewrite>			
 			</catalog_resource_eav_mysql4>
 			<catalogsearch>
 				<rewrite> 
-					<layer>Pektsekye_CatalogSearch_Model_Layer</layer> 
+					<layer>Pektsekye_Mmn_Model_Layer</layer> 
 				</rewrite> 
 			</catalogsearch> 			
             <mmn>
@@ -119,25 +63,11 @@
             </mmn_mysql4>
         </models>
         <resources>
-		
-            <mmn_setup>
-                <setup>
-                    <module>Pektsekye_Mmn</module>
-                </setup>
-                <connection>
-                    <use>core_setup</use>
-                </connection>
-            </mmn_setup>
-            <mmn_write>
-                <connection>
-                    <use>core_write</use>
-                </connection>
-            </mmn_write>
-            <mmn_read>
-                <connection>
-                    <use>core_read</use>
-                </connection>
-            </mmn_read>
+				<mmn_read>
+					 <connection>
+						  <use>core_read</use>
+					 </connection>
+				</mmn_read>
         </resources>
         <blocks>
             <mmn>
