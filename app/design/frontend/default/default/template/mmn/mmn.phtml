@@ -22,7 +22,9 @@ if (count($rows) > 0) {
 	$Model_array[] = array('id' => 'all', 'text' => $this->__('Choose Model'));
 	$Number_array[] = array('id' => 'all', 'text' => $this->__('Choose Number'));
 
-   $javascript = '<script language="javascript" type="text/javascript">
+   $javascript = '<script type="text/javascript">
+//<![CDATA[
+
 var a = new Array();
 var b = new Array();
 var c = new Array();';
@@ -61,8 +63,8 @@ var c = new Array();';
       $javascript .= '
 function pop_model(){
 	
-	var o ="<select name=\"Model\" onChange=\"pop_number();\" style=\"width: 100%\"><option value=\"all\">' . $this->__('Choose Model') . '</option>";	
-	var sv = document.manufacturer_model_number.Manufacturer.value;
+	var o ="<select name=\"Model\" id=\"mmn_model\" onchange=\"pop_number();\" style=\"width: 100%\"><option value=\"all\">' . $this->__('Choose Model') . '</option>";	
+	var sv = $(\'mmn_manufacturer\').value;
 	if(sv != "all"){
 		var v = a.length;
 		while(v--) if(sv == a[v]) break;
@@ -70,17 +72,17 @@ function pop_model(){
 		  o+="<option value=\""+b[v][i]+"\">"+b[v][i]+"</option>";
 	}
 	o+="</select>";
-	document.getElementById("model_select").innerHTML= o;
-    document.getElementById("number_select").innerHTML= "<select name=\"Number\" style=\"width: 100%\"><option value=\"all\">' . $this->__('Choose Number') . '</option></select>";
+	$(\'model_select\').innerHTML= o;
+    $(\'number_select\').innerHTML= "<select name=\"Number\" style=\"width: 100%\"><option value=\"all\">' . $this->__('Choose Number') . '</option></select>";
 }
 function pop_number(){
 	
-	var o ="<select name=\"Number\" style=\"width: 100%\" onChange=\"document.manufacturer_model_number.submit();\"><option value=\"all\">' . $this->__('Choose Number') . '</option>";
-	var sv = document.manufacturer_model_number.Manufacturer.value;
+	var o ="<select name=\"Number\" style=\"width: 100%\" onchange=\"$(\'mmn_form\').submit();\"><option value=\"all\">' . $this->__('Choose Number') . '</option>";
+	var sv = $(\'mmn_manufacturer\').value;
 	if(sv != "all"){
 		var v = a.length;
 		while(v--) if(sv == a[v]) break;
-		var sv2 = document.manufacturer_model_number.Model.value;
+		var sv2 = $(\'mmn_model\').value;
 			if(sv2 != "all"){
 				var v2 = b[v].length;
 				while(v2--) if(sv2 == b[v][v2]) break;	
@@ -89,8 +91,9 @@ function pop_number(){
 			}
 	}
 	o+="</select>";
-	document.getElementById("number_select").innerHTML= o;
+	$(\'number_select\').innerHTML= o;
 }
+//]]>
 </script>';
 
 	$expire = time()+60*60*24*90;
@@ -130,7 +133,7 @@ function pop_number(){
     <div class="head">
         <h4><span><?php echo $this->__('Select Printer'); ?></span></h4>
     </div>
-    <form name="manufacturer_model_number"  action="<?php 
+    <form id="mmn_form"  action="<?php 
 	$hidden = '';
 	if($module == 'catalog_category_view'){
 		echo '';
@@ -140,29 +143,29 @@ function pop_number(){
 		echo Mage::getUrl('mmn/product/list');
 	}	
 
-?>" method="get" onsubmit="return document.manufacturer_model_number.Manufacturer.value != 'all' ? true : false">
+?>" method="get" onsubmit="return $('mmn_manufacturer').value != 'all' ? true : false">
 <?php echo $hidden; ?>
         <div class="content">
-			<select name="Manufacturer" onChange="pop_model();"  style="width: 100%">
+			<select name="Manufacturer" id="mmn_manufacturer" onchange="pop_model();"  style="width: 100%">
 			<?php
 			foreach($Manufacturer_array as $option)
 				echo '<option value="'.$option['id'].'" '.(isset($Manufacturer_selected_var) && $Manufacturer_selected_var == $option['id'] ? 'SELECTED' : '').'>'.$option['text'].'</option>';
 			?>
-			</select><br><br>
+			</select><br/><br/>
 			<span id="model_select">
-			<select name="Model" onChange="pop_number();" style="width: 100%">
+			<select name="Model" id="mmn_model" onchange="pop_number();" style="width: 100%">
 			<?php
 			foreach($Model_array as $option)
 				echo '<option value="'.$option['id'].'" '.(isset($Model_selected_var) && $Model_selected_var == $option['id'] ? 'SELECTED' : '').'>'.$option['text'].'</option>';
 			?>
-			</select></span><br><br>
+			</select></span><br/><br/>
 			<span id="number_select">
-			<select name="Number" onChange="document.manufacturer_model_number.submit();"  style="width: 100%">
+			<select name="Number" onchange="$('mmn_form').submit();"  style="width: 100%">
 			<?php
 			foreach($Number_array as $option)
 				echo '<option value="'.$option['id'].'" '.(isset($Number_selected_var) && $Number_selected_var == $option['id'] ? 'SELECTED' : '').'>'.$option['text'].'</option>';
 			?>
-			</select></span><br><br>			
+			</select></span><br/><br/>			
         </div>
         <div class="actions">
 		<button class="form-button-alt right" type="submit"><span><?php echo $this->__('Go'); ?></span></button>
