@@ -1,5 +1,7 @@
 {
     "keywords": [
         "openmage-module"
-    ]
+    ],
+    "name": "openmage-module-fostering\/manufacturer_model_number",
+    "license": "OSL-3.0"
 }
