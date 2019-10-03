@@ -1,16 +1,5 @@
 {
-    "name": "OpenMageModuleFostering/Manufacturer_Model_Number",
-    "type": "magento-module",
-    "license": "OSL-v3.0",
-    "homepage": "",
-    "description": "Manufacturer Model Number (MMN) "Select Printer" filter box for Printer Cartridges  web sites",
-    "authors": [
-    {
-        "name": "Stanislav",
-        "email": "pektsekye@gmail.com"
-    }
-],
-    "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+    "keywords": [
+        "openmage-module"
+    ]
 }
